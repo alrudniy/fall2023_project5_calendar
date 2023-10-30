@@ -28,6 +28,7 @@ if(isset($_POST["Submit_But"]))
 $usernameEmail = mysqli_real_escape_string($AWSCN,$_POST['Username']);
 $password = mysqli_real_escape_string($AWSCN,$_POST['UserPass']);
 $hash_password= hash('sha512', $password);
+define("AUTH_KEY","CSCI340");
 $h_pass=md5($hash_password.AUTH_KEY);
 if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
    {

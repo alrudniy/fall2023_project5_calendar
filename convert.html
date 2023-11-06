@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Creat ICS</h2>
+
+<form id="icsForm">
+  Event Name:<br>
+  <input type="text" id="eventName" name="eventName">
+  <br>
+  Start Date and Time:<br>
+  <input type="datetime-local" id="startDate" name="startDate">
+  <br>
+  End Date and Time:<br>
+  <input type="datetime-local" id="endDate" name="endDate">
+  <br><br>
+  <input type="button" value="Set up a date" onclick="generateICS()">
+</form>
+
+<script>
+function generateICS() {
+  var eventName = document.getElementById("eventName").value;
+  var startDate = new Date(document.getElementById("startDate").value);
+  var endDate = new Date(document.getElementById("endDate").value);
+
+  var icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:${formatDate(startDate)}
+DTEND:${formatDate(endDate)}
+SUMMARY:${eventName}
+END:VEVENT
+END:VCALENDAR`;
+
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/calendar;charset=utf-8,' + encodeURIComponent(icsContent));
+  element.setAttribute('download', 'event.ics');
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
+function formatDate(date) {
+  return date.toISOString().replace(/-|:|\.\d+/g, '');
+}
+</script>
+
+</body>
+</html>

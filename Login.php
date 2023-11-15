@@ -96,7 +96,7 @@ if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
 			<div class="la-anim-1"></div>
 		</div>
 		<!--/Preloader-->
-
+<!--the logo for drew-->
 		<div class="wrapper pa-0">
 			<header class="sp-header">
 				<div class="sp-logo-wrap pull-left">

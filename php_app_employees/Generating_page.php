@@ -4,7 +4,7 @@
 <style>
 body {
   font-family: Arial;
-  color: white;
+  color: black;
 }
 
 .split {
@@ -19,6 +19,7 @@ body {
 .left {
   left: 0;
   width: 25%;
+  background-color: lightgrey;
 }
 
 .right {

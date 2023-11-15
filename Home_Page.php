@@ -19,13 +19,11 @@ body {
 .left {
   left: 0;
   width: 25%;
-  background-color: #111;
 }
 
 .right {
   right: 0;
   width: 75%;
-  background-color: red;
 }
 
 .centered {

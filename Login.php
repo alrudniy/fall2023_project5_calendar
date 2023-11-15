@@ -100,8 +100,8 @@ if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
 		<div class="wrapper pa-0">
 			<header class="sp-header">
 				<div class="sp-logo-wrap pull-left">
-					<a href="index.html">
-						<img class="brand-img mr-10" src="img/logo.png" alt="brand"/>
+					<a href="drew.edu">
+						<img class="brand-img mr-10" src="img/drewimage.png" alt="brand"/>
 						<span class="brand-text"><?php echo Project_Name ?></span>
 					</a>
 				</div>

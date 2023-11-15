@@ -118,19 +118,19 @@ if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
 								<div class="row">
 									<div class="col-sm-12 col-xs-12">
 										<div class="mb-30">
-											<h3 class="text-center txt-dark mb-10">Sign in to <?php echo Project_Name ?></h3>
+											<h3 class="text-center txt-dark mb-10"> Login <?php echo Project_Name ?></h3>
 											<h6 class="text-center nonecase-font txt-grey">Enter your login credentials below.</h6>
 										</div>
 
 										<div class="form-wrap">
                                             <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
 												<div class="form-group">
-													<label class="control-label mb-10" for="exampleInputEmail_2">Username</label>
+													<label class="control-label mb-10" for="exampleInputEmail_2">Username: </label>
 													<!--<input type="email" class="form-control" required="" name="UserEmail" id="exampleInputEmail_2" placeholder="Enter username">-->
 													<input type="text" class="form-control" required="" name="Username" id="input_username" placeholder="Enter username">
 												</div>
 												<div class="form-group">
-													<label class="pull-left control-label mb-10" for="exampleInputpwd_2">Password</label>
+													<label class="pull-left control-label mb-10" for="exampleInputpwd_2">Password: </label>
 													<input type="password" class="form-control" required="" name="UserPass" id="exampleInputpwd_2" placeholder="Enter password">
                                                     <br/>
                                                     <a class="capitalize-font txt-primary block mb-10 pull-right font-12" href="forgot-password.html">forgot password ?</a>

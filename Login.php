@@ -75,7 +75,7 @@ if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>Payroll - Login</title>
+		<title> Class Schedule Login</title>
 		<meta name="description" content="Payroll Login" />
 		<meta name="keywords" content="Payroll Login Page" />
 		
@@ -102,7 +102,7 @@ if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
 				<div class="sp-logo-wrap pull-left">
 					<a href="https://drew.edu/">
 						<img class="brand-img mr-10" src="img/drewimage.png" alt="brand"/>
-						<span class="brand-text"><?php echo Project_Name ?></span>
+			
 					</a>
 				</div>
 				<div class="clearfix"></div>
@@ -118,20 +118,20 @@ if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
 								<div class="row">
 									<div class="col-sm-12 col-xs-12">
 										<div class="mb-30">
-											<h3 class="text-center txt-dark mb-10"> Login <?php echo Project_Name ?></h3>
-											<h6 class="text-center nonecase-font txt-grey">Enter your login credentials below.</h6>
+											<h3 class="text-center txt-dark mb-10" style ="font-family:Roboto Serif" style= "font-size:20px" > Login </h3>
+											
 										</div>
 
 										<div class="form-wrap">
                                             <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
 												<div class="form-group">
-													<label class="control-label mb-10" for="exampleInputEmail_2">Username: </label>
+													<label class="control-label mb-10" for="exampleInputEmail_2" style="font-family:Roboto Serif" style= "font-size:20px"> Username: </label>
 													<!--<input type="email" class="form-control" required="" name="UserEmail" id="exampleInputEmail_2" placeholder="Enter username">-->
-													<input type="text" class="form-control" required="" name="Username" id="input_username" placeholder="Enter username">
+													<input type="text" class="form-control" required="" name="Username" id="input_username" >
 												</div>
 												<div class="form-group">
-													<label class="pull-left control-label mb-10" for="exampleInputpwd_2">Password: </label>
-													<input type="password" class="form-control" required="" name="UserPass" id="exampleInputpwd_2" placeholder="Enter password">
+													<label class="pull-left control-label mb-10" for="exampleInputpwd_2"  style="font-family:Roboto Serif" style= "font-size:20px" >Password: </label>
+													<input type="password" class="form-control" required="" name="UserPass" id="exampleInputpwd_2">
                                                     <br/>
                                                     <a class="capitalize-font txt-primary block mb-10 pull-right font-12" href="forgot-password.html">forgot password ?</a>
                                                     <div class="clearfix"></div>
@@ -175,3 +175,4 @@ if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
 		<script src="dist/js/init.js"></script>
 	</body>
 </html>
+

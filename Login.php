@@ -100,7 +100,7 @@ if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
 		<div class="wrapper pa-0">
 			<header class="sp-header">
 				<div class="sp-logo-wrap pull-left">
-					<a href="https://drew.edu/">
+					<a href="https://moodle.drew.edu/">
 						<img class="brand-img mr-10" src="img/drewimage.png" alt="brand"/>
 			
 					</a>

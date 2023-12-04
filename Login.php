@@ -144,7 +144,7 @@ if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
                                                     <?php echo $errorMsgLogin; ?>
 													
 													 <button type="button" onclick="alert('website coming soon')"> new user? register here! </button> 
-													 <button type="button" onclick="alert('website coming soon')">Guest? use without login </button>  
+ 
                                                 </div>
 											</form>
 										</div>

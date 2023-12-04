@@ -133,8 +133,7 @@ if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
 													<label class="pull-left control-label mb-10" for="exampleInputpwd_2"  style="font-family:Roboto Serif" style= "font-size:20px" >Password: </label>
 													<input type="password" class="form-control" required="" name="UserPass" id="exampleInputpwd_2">
                                                     <br/>
-                                                     <button type="button" onclick="alert('website coming soon')"> new user? register here! </button> 
-													 <button type="button" onclick="alert('website coming soon')">Guest? use without login </button>  
+                                                    
                                                     <div class="clearfix"></div>
 												</div>
 
@@ -143,6 +142,9 @@ if(strlen(trim($usernameEmail))>1 && strlen(trim($h_pass))>1 )
 												</div>
                                                 <div class="form-group text-center">
                                                     <?php echo $errorMsgLogin; ?>
+													
+													 <button type="button" onclick="alert('website coming soon')"> new user? register here! </button> 
+													 <button type="button" onclick="alert('website coming soon')">Guest? use without login </button>  
                                                 </div>
 											</form>
 										</div>

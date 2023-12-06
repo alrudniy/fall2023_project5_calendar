@@ -5,55 +5,70 @@
 body {
   font-family: Arial;
   color: black;
+  margin: 0;
+  display: flex;
+  height: 100vh;
 }
 
-.split {
-  height: 100%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
 
 .left {
-  left: 0;
-  width: 25%;
+  flex: 1;
   background-color: lightgrey;
+  text-align: center;
 }
 
 .right {
-  right: 0;
-  width: 75%;
+  flex: 3;
+  padding-left: 20px;
 }
 
 .centered {
   position: absolute;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
 }
 
-.centered img {
-  width: 150px;
-  border-radius: 50%;
-}
 </style>
 </head>
+
 <body>
-
-<div class="split left">
-    <h2>History</h2>
-    <p>Some text.</p>
+<div class="left">
+    <h1>History</h1>
+    <p>Previously generated documents...</p>
 </div>
 
-<div class="split right">
-  <div class="centered">
-    <h2>John Doe</h2>
-    <p>Some text here too.</p>
-  </div>
+<div class="right">
+  <h1><center>Generate your class schedule</center></h1>
+    <form method="post" action="upload.php">
+        Class name: <input type="text" id="name" name="name" required><br><br/>
+        Upload your current class schedule: <input type="file" id="uploaded_file" name="filename" 
+                                                  accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />><br><br/>
+        Start date: <input type="date" id="start_date" name="start_date" required><br/><br/>
+        End date: <input type="date" id="end_date" name="end_date" required><br/><br/>
+        When does class meet: <select id="cars" name="cars" size="5" multiple required>
+          <option id="day.m" value="monday">Monday</option>
+          <option id="day.t" value="tuesday">Tuesday</option>
+          <option id="day.w" value="wednesday">Wednesday</option>
+          <option id="day.r" value="thursday">Thursday</option>
+          <option id="day.f" value="friday">Friday</option>
+        </select><br><br>
+        <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options </p>
+        What dates do you not want to include? <input type="text" id="exception"name="exception">
+        <input type="submit" value="submit" >
+    </form>
 </div>
-     
+ 
+
+<!--
+  How to interpret the multiple dates:
+  if(isset($_POST['excemption'])){
+    foreach (explode(' ', $_POST['excemption']) as $key => $value){
+        ${'var'.$key} = $value
+    }
+}
+?>
+-->
+
 </body>
 </html> 

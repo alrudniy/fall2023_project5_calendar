@@ -22,13 +22,15 @@ body {
   padding-left: 20px;
 }
 
-.centered {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
+p{
+  font-size:13px; 
+  color: grey; 
+  font-style:italic;
   text-align: center;
 }
-
+.special{
+  color: red;
+}
 </style>
 </head>
 
@@ -53,9 +55,13 @@ body {
           <option id="day.r" value="thursday">Thursday</option>
           <option id="day.f" value="friday">Friday</option>
         </select><br><br>
-        <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options </p>
-        What dates do you not want to include? <input type="text" id="exception"name="exception">
-        <input type="submit" value="submit" >
+        <p> 
+          <span class="special"> ** </span>
+        Hold down the Ctrl (windows) / Command (Mac) button to select multiple options 
+        <span class="special"> ** </span>
+        </p><br><br>
+        What dates do you not want to include? <input type="text" id="exception"name="exception"><br/><br/>
+        <center><input type="submit" value="Submit" style="height:auto; width:auto;font-size:500px" > </center>
     </form>
 </div>
  

@@ -60,7 +60,9 @@ p{
 <div class="right">
  <h1><center>Generate Your Schedule</center></h1>
    <form method="post" action="generate_file.php">
-   <span class="special"> * </span>Class name: <input type="text" id="name" name="name" placeholder="CSCI 150" required><br><br/>
+   <span class="special"> * </span>Class Name: <input type="text" id="class_name" name="class_name" placeholder="CSCI 150" required><br><br/>
+
+
        Upload your current class schedule: <input type="file" id="uploaded_file" name="filename"
                                                  accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" /><br>
                                                  <br/>
@@ -87,7 +89,8 @@ p{
        Optional: Insert dates class does not meet: <input type="text" id="exception"name="exception" placeholder="mmddyyyy">
        <p>
          <span class="special"> ** </span>
-       Separate each date with a comma following the format
+       Follow the format and separate each date with a comma.
+       Example: 12252023, 01012024
        <span class="special"> ** </span>
        </p><br>
        <center><input type="submit" value="Generate Schedule"> </center>

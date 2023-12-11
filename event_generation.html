@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h2 {
+    color: #444;
+}
+
+form {
+    background: #fff;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type=text], input[type=datetime-local], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=button] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=button]:hover {
+    background-color: #45a049;
+}
+
+#eventsContainer {
+    margin-bottom: 20px;
+}
+.button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .button-link:hover {
+            background-color: #45a049;
+        }
+</style>
+</head>
+<body>
+
+<h2>Create New Event</h2>
+<a href="http://localhost/fall2023_project5_calendar/index_test.php" class="button-link">Main</a>
+<form id="icsForm">
+    <div id="eventsContainer">
+        <!-- Event fields will be added here -->
+    </div>
+    <input type="button" value="Add Event" onclick="addEventFields()">
+    <input type="button" value="Set up a date" onclick="generateICS()">
+</form>
+
+<script>
+function addEventFields() {
+    var container = document.getElementById('eventsContainer');
+
+    var div = document.createElement('div');
+    
+
+    // Event Name
+    var eventNameLabel = document.createElement('label');
+    eventNameLabel.textContent = "Event Name:";
+    eventNameLabel.htmlFor = "eventName";
+    div.appendChild(eventNameLabel);
+    
+    var eventNameInput = document.createElement('input');
+    eventNameInput.type = 'text';
+    eventNameInput.name = 'eventName';
+    div.appendChild(eventNameInput);
+
+    // Start Date and Time
+    var startDateLabel = document.createElement('label');
+    startDateLabel.textContent = "Start Date and Time:";
+    startDateLabel.htmlFor = "startDate";
+    div.appendChild(startDateLabel);
+
+    var startDateInput = document.createElement('input');
+    startDateInput.type = 'datetime-local';
+    startDateInput.name = 'startDate';
+    div.appendChild(startDateInput);
+
+    // End Date and Time
+    var endDateLabel = document.createElement('label');
+    endDateLabel.textContent = "End Date and Time:";
+    endDateLabel.htmlFor = "endDate";
+    div.appendChild(endDateLabel);
+
+    var endDateInput = document.createElement('input');
+    endDateInput.type = 'datetime-local';
+    endDateInput.name = 'endDate';
+    div.appendChild(endDateInput);
+
+    // Description
+    var descriptionLabel = document.createElement('label');
+    descriptionLabel.textContent = "Description:";
+    descriptionLabel.htmlFor = "eventDescription";
+    div.appendChild(descriptionLabel);
+
+    var descriptionInput = document.createElement('input');
+    descriptionInput.type = 'text';
+    descriptionInput.name = 'eventDescription';
+    div.appendChild(descriptionInput);
+
+    // Repeat Frequency
+    var repeatLabel = document.createElement('label');
+    repeatLabel.textContent = "Repeat:";
+    repeatLabel.htmlFor = "repeatFrequency";
+    div.appendChild(repeatLabel);
+
+    var repeatSelect = document.createElement('select');
+    repeatSelect.name = 'repeatFrequency';
+    var options = ['None', 'Daily', 'Weekly', 'Monthly', 'Yearly'];
+    for(var i = 0; i < options.length; i++) {
+        var option = document.createElement('option');
+        option.value = options[i].toLowerCase();
+        option.text = options[i];
+        repeatSelect.appendChild(option);
+    }
+    div.appendChild(repeatSelect);
+
+    // Add a small space after each event block
+    div.appendChild(document.createElement('hr'));
+
+    container.appendChild(div);
+}
+
+
+function generateICS() {
+    var eventsContainer = document.getElementById('eventsContainer');
+    var eventBlocks = eventsContainer.getElementsByClassName('eventBlock');
+
+    var icsContent = 'BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Your Company//Your Product//EN\n';
+
+    for (var i = 0; i < eventBlocks.length; i++) {
+        var inputs = eventBlocks[i].getElementsByTagName('input');
+        var selects = eventBlocks[i].getElementsByTagName('select');
+
+        var eventName = inputs[0].value;
+        var startDate = new Date(inputs[1].value);
+        var endDate = new Date(inputs[2].value);
+        var description = inputs[3].value;
+        var repeatFrequency = selects[0].value;
+
+        icsContent += 'BEGIN:VEVENT\n';
+        icsContent += `UID:${generateUID()}\n`;
+        icsContent += `DTSTAMP:${formatDate(new Date())}\n`;
+        icsContent += `DTSTART:${formatDate(startDate)}\n`;
+        icsContent += `DTEND:${formatDate(endDate)}\n`;
+        icsContent += `SUMMARY:${eventName}\n`;
+        icsContent += `DESCRIPTION:${description}\n`;
+        if (repeatFrequency !== 'none') {
+            icsContent += `RRULE:FREQ=${repeatFrequency.toUpperCase()};\n`;
+        }
+        icsContent += 'END:VEVENT\n';
+    }
+
+    icsContent += 'END:VCALENDAR';
+
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/calendar;charset=utf-8,' + encodeURIComponent(icsContent));
+    element.setAttribute('download', 'events.ics');
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
+function formatDate(date) {
+    return date.toISOString().replace(/-|:|\.\d+/g, '');
+}
+
+function generateUID() {
+    return 'uid-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+}
+</script>
+
+</body>
+</html>

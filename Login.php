@@ -10,10 +10,10 @@ $CDT = $dt->format('d/m/Y');
 if (!empty($_SESSION['uid'])) {
     $Roles = $_SESSION["RE"];
     if ($Roles == 'Manager') {
-        header("Location: Home_Manager.php");
+        header("Location: index_test.php");
         exit();
     } else {
-        header("Location: Home_Employee.php");
+        header("Location: index_test.php");
         exit();
     }
 }
@@ -26,10 +26,12 @@ if (isset($_POST["Submit_But"])) {
     // Hardcoded credentials for demonstration
     $validUsername = 'admin';
     $validPassword = 'password';
+    $validUsername = 'p5';
+    $validPassword = 'Vkugk195';
 
     if ($username === $validUsername && $password === $validPassword) {
         $_SESSION['uid'] = $username; // Set some session variables if login is successful
-        header("Location: Home_Manager.php"); // Redirect to a home page
+        header("Location: index_test.php"); // Redirect to a home page
         exit();
     } else {
         $errorMsgLogin = "Invalid username or password.";
@@ -43,7 +45,71 @@ if (isset($_POST["Submit_But"])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Class Schedule Login</title>
-    <!-- Include your CSS files here -->
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #ADD8E6; /* 浅蓝色背景 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-form-wrap {
+            background-color: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 350px; /* 调整宽度 */
+        }
+
+        .form-wrap {
+            margin-top: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: #007bff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-rounded {
+            border-radius: 20px;
+        }
+
+        .error-msg {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
     <!-- Preloader -->
@@ -66,7 +132,6 @@ if (isset($_POST["Submit_But"])) {
         <!-- Main Content -->
         <div class="page-wrapper pa-0 ma-0 auth-page">
             <div class="container-fluid">
-                <!-- Row for Form -->
                 <div class="table-struct full-width full-height">
                     <div class="table-cell vertical-align-middle auth-form-wrap">
                         <div class="auth-form ml-auto mr-auto no-float card-view pt-30 pb-30">
@@ -93,30 +158,11 @@ if (isset($_POST["Submit_But"])) {
                                             </div>
                                         </form>
                                     </div>
-                                    <!-- Register button to show registration form -->
-                                        <div class="form-group text-center">
-                                            <a href="register.html" class="btn btn-primary btn-rounded">Register</a>
-                                        </div>
-                                    <!-- Registration Modal -->
-                                    <div id="registerModal" style="display:none;">
-                                        <h2>Registration Form</h2>
-                                        <form id="registrationForm">
-                                            <input type="text" id="firstName" name="firstName" placeholder="First Name"><br>
-                                            <input type="text" id="middleName" name="middleName" placeholder="Middle Name"><br>
-                                            <input type="text" id="lastName" name="lastName" placeholder="Last Name"><br>
-                                            <input type="email" id="email" name="email" placeholder="E-mail"><br>
-                                            <input type="text" id="phone" name="phone" placeholder="Phone Number"><br>
-                                            <select id="gender" name="gender">
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                                <option value="other">Other</option>
-                                            </select><br>
-                                            <input type="date" id="dob" name="dob" placeholder="DOB"><br>
-                                            <input type="text" id="address" name="address" placeholder="Address"><br>
-                                            <button type="submit">Submit</button>
-                                            <button type="button" onclick="closeModal()">Close</button>
-                                        </form>
+                                <!-- Register button -->
+                                    <div class="form-group text-center">
+                                        <a href="register.html" class="btn btn-primary btn-rounded">Register</a>
                                     </div>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -138,10 +184,7 @@ if (isset($_POST["Submit_But"])) {
             document.getElementById('registerModal').style.display = 'none';
         }
 
-        document.getElementById('registrationForm').onsubmit = function(event) {
-            event.preventDefault();
-            closeModal();
-        };
-        </script>
-    </body>
+
+    </script>
+</body>
 </html>

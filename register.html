@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #298486; /* 浅灰色背景 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 视窗高度 */
+            margin: 0;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 300px; /* 调整宽度 */
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form id="registrationForm" action="submit_registration.php" method="post">
+        <h2>Registration Form</h2>
+        <input type="text" id="firstName" name="firstName" placeholder="First Name"><br>
+        <input type="text" id="middleName" name="middleName" placeholder="Middle Name"><br>
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name"><br>
+        <input type="email" id="email" name="email" placeholder="E-mail"><br>
+        <input type="text" id="phone" name="phone" placeholder="Phone Number"><br>
+        <select id="gender" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select><br>
+        <input type="date" id="dob" name="dob" placeholder="DOB"><br>
+        <input type="text" id="address" name="address" placeholder="Address"><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

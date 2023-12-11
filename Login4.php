@@ -50,18 +50,18 @@ if (isset($_POST["Submit_But"])) {
             height: 100%;
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #ADD8E6; /* 浅蓝色背景 */
+            background-color: #ADD8E6; 
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .auth-form-wrap {
-            background-color: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
+            background-color: rgba(255, 255, 255, 0.9); 
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 350px; /* 调整宽度 */
+            width: 350px; 
         }
 
         .form-wrap {

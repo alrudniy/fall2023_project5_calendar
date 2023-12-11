@@ -4,10 +4,7 @@ session_start();
 
 ini_set('display_errors', 0);
 
-require_once (dirname(__file__) . '/DB_Config.php'); // Database connection
-
-// Setting the time and date with timezone
-$dt = new DateTime('now', new DateTimeZone(TMZ)); 
+$dt = new DateTime('now', new DateTimeZone('America/New_York')); 
 $CDT = $dt->format('d/m/Y');
 
 if (!empty($_SESSION['uid'])) {
@@ -23,28 +20,19 @@ if (!empty($_SESSION['uid'])) {
 
 $errorMsgLogin = "";
 if (isset($_POST["Submit_But"])) {
-    $usernameEmail = mysqli_real_escape_string($AWSCN, $_POST['Username']);
-    $password = mysqli_real_escape_string($AWSCN, $_POST['UserPass']);
-    $hash_password = hash('sha512', $password);
-    define("AUTH_KEY", "CSCI340");
-    $h_pass = md5($hash_password . AUTH_KEY);
+    $username = $_POST['Username'];
+    $password = $_POST['UserPass'];
 
-    if (strlen(trim($usernameEmail)) > 1 && strlen(trim($h_pass)) > 1) {
-        $user_result = mysqli_query($AWSCN, "SELECT c.user_id, c.emp_id, e.f_name, e.l_name, e.emp_role FROM credentials c JOIN employee e ON c.emp_id = e.emp_id WHERE c.user_id='$usernameEmail' AND c.pwd_hash='$password'");
-        if (mysqli_num_rows($user_result) == 1) {
-            $user_row = mysqli_fetch_array($user_result);
-            $_SESSION['uid'] = $user_row['emp_id'];
-            $_SESSION['Name'] = $user_row['f_name'] . " " . $user_row['l_name'];
-            $_SESSION['Role'] = $user_row['emp_role'];
+    // Hardcoded credentials for demonstration
+    $validUsername = 'admin';
+    $validPassword = 'password';
 
-            // Redirect to the next page after successful login
-            header("Location: NextPage.php"); // Replace "NextPage.php" with your target page
-            exit();
-        } else {
-            $errorMsgLogin = "User credentials are incorrect!";
-        }
+    if ($username === $validUsername && $password === $validPassword) {
+        $_SESSION['uid'] = $username; // Set some session variables if login is successful
+        header("Location: Home_Manager.php"); // Redirect to a home page
+        exit();
     } else {
-        $errorMsgLogin = "Enter login credentials.";
+        $errorMsgLogin = "Invalid username or password.";
     }
 }
 ?>
@@ -86,7 +74,7 @@ if (isset($_POST["Submit_But"])) {
                                 <div class="col-sm-12 col-xs-12">
                                     <div class="mb-30">
                                         <h3 class="text-center txt-dark mb-10">Login</h3>
-                                    </div>  
+                                    </div>
                                     <div class="form-wrap">
                                         <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
                                             <div class="form-group">
@@ -106,9 +94,9 @@ if (isset($_POST["Submit_But"])) {
                                         </form>
                                     </div>
                                     <!-- Register button to show registration form -->
-                                    <div class="form-group text-center">
-                                        <button type="button" class="btn btn-primary btn-rounded" onclick="openModal()">Register</button>
-                                    </div>
+                                        <div class="form-group text-center">
+                                            <a href="register.html" class="btn btn-primary btn-rounded">Register</a>
+                                        </div>
                                     <!-- Registration Modal -->
                                     <div id="registerModal" style="display:none;">
                                         <h2>Registration Form</h2>
@@ -154,7 +142,6 @@ if (isset($_POST["Submit_But"])) {
             event.preventDefault();
             closeModal();
         };
-    </script>
-
-</body>
+        </script>
+    </body>
 </html>

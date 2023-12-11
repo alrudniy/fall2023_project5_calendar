@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Register</title>
+    <!-- Include your CSS files here -->
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form id="registrationForm" action="submit_registration.php" method="post">
+        <input type="text" id="firstName" name="firstName" placeholder="First Name"><br>
+        <input type="text" id="middleName" name="middleName" placeholder="Middle Name"><br>
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name"><br>
+        <input type="email" id="email" name="email" placeholder="E-mail"><br>
+        <input type="text" id="phone" name="phone" placeholder="Phone Number"><br>
+        <select id="gender" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select><br>
+        <input type="date" id="dob" name="dob" placeholder="DOB"><br>
+        <input type="text" id="address" name="address" placeholder="Address"><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
